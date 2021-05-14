@@ -21,6 +21,7 @@ function App() {
   return (
     <div style={{height: "85vh", width: "70vw"}} className="box-shadow">
     
+    <div className="gradient-header"/>
     <ReferencedListRenderer notes={notes} ref={ref}/>
       
       <div className="bottom-container">
@@ -34,7 +35,8 @@ function App() {
             const oNow = new Date();
             setNotes([...notes, {userName: "You", time: oNow.getTime(), note: textNote, isMine: true}]);
             setNoteText("");
-          }} className="button">Publish</button>
+          }} className="button"
+          disabled={textNote === ""}>Publish</button>
         </div>
       </div>
     </div>

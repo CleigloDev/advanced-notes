@@ -3,6 +3,13 @@
   box-shadow: -3px 5px 5px -3px rgb(0 0 0 / 64%);
 }
 
+.gradient-header {
+  height: 10vh;
+  position: absolute;
+  width: 68vw;
+  background: linear-gradient(180deg, rgba(255,255,255,1) 50%, rgba(0,212,255,0) 100%);
+}
+
 /* new item*/
 
 .bottom-container {
@@ -100,7 +107,6 @@
 }
 
 .note-info-text {
-  margin-left: 1vw;
   padding-top: 1vh;
   padding-bottom: 1vh;
   padding-right: 6vh;
@@ -110,10 +116,12 @@
 
 .note-info-text-others {
   background-color: #eff2f7;
+  margin-left: 1vw;
 }
 
 .note-info-text-mine {
   background-color: #c2cddd;
+  margin-right: 1vw;
 }
 
 .note-info-name {

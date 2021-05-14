@@ -1,7 +1,7 @@
 import React from 'react';
 import NoteItem from './NoteItem';
 
-export default function ListRenderer(props, ref) {
+export default function ListRenderer(props) {
 
   const _renderListItem = props => (
     <div className="list-renderer">
