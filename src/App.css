@@ -1,3 +1,19 @@
+.box-shadow {
+  -webkit-box-shadow: -3px 5px 5px -3px rgb(0 0 0 / 64%);
+  box-shadow: -3px 5px 5px -3px rgb(0 0 0 / 64%);
+}
+
+/* new item*/
+
+.bottom-container {
+  height: 15%;
+  background-color: #eff2f7;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .input {
   display: block;
   width: 100%;
@@ -38,23 +54,130 @@
   width: 95%;
 }
 
+/*list renderer*/
+
+.list-renderer {
+  height: 85%;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+/* note item */
+
+.user-pic {
+  border-radius: 3rem;
+  height: 5vh;
+  width: 5vh;
+  margin: 1vh;
+  margin-top: 4vh;
+}
+
+.note-info {
+  min-height: 15vh;
+  width: 93%;
+  margin: 1vw;
+}
+
+.note-info-post {
+  display: flex;
+  flex-direction: row;
+  width: auto;
+  height: 5vh;
+  justify-content: space-between;
+  align-items: center
+}
+
+@media screen and (max-width: 600px) {
+  .note-info-post {
+    display: flex;
+    flex-direction: column;
+    width: auto;
+    height: auto;
+    align-items: center
+  }
+}
+
+.note-info-text {
+  margin-left: 1vw;
+  padding-top: 1vh;
+  padding-bottom: 1vh;
+  padding-right: 6vh;
+  padding-left: 5vh;
+  align-items: center;
+}
+
+.note-info-text-others {
+  background-color: #eff2f7;
+}
+
+.note-info-text-mine {
+  background-color: #c2cddd;
+}
+
+.note-info-name {
+  color: #2c3137; 
+  font-size: 2vh;
+  font-weight: bold;
+}
+
+.note-info-date {
+  color: #9ba6b6;
+  font-size: 1.5vh;
+}
+
 .note-container {
   display: flex;
   flex-direction: row;
+}
+
+.note-container-others {
   justify-content: flex-start;
-  margin-left: "1rem";
-  margin-right: "1rem";
 }
 
-.image {
-  background-image: url('./images/images.jpg');
-  background-size: cover;
+.note-container-mine {
+  justify-content: flex-end;
 }
 
-.box-shadow {
-  -webkit-box-shadow: -3px 5px 5px -3px rgb(0 0 0 / 64%);
-  box-shadow: -3px 5px 5px -3px rgb(0 0 0 / 64%);
+.note-item {
+  height: auto;
+  width: 75%;
+  display: flex;
+  margin-right: 1vw;
+  margin-left: 1vw;
 }
+
+.note-item-others {
+  flex-direction: row;
+}
+
+.note-item-mine {
+  flex-direction: row-reverse;
+}
+
+.hide-content {
+  overflow: hidden;
+  line-height: 1em;
+  height: 3em;
+}
+
+.show-content {
+  line-height: 1em;
+  height: auto;
+}
+
+.test {
+  position: relative;
+  border: 1vw solid;
+  left: 0rem;
+  border-color: #eff2f7 transparent transparent transparent;
+  width: 0;
+  height: 0;
+  top: -17rem;
+}
+
+/*placeholder*/
 
 ::placeholder {
   color: #ced3d8;
