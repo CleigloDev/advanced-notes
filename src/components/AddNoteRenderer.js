@@ -3,7 +3,7 @@ import filter from '../icons/filtro.png';
 
 export default function AddNoteRenderer(props) {
     const [textNote, setNoteText] = useState("");
-    let { notes, addNote } = props;
+    let { notes, addNote, openDialogFilters } = props;
 
     const _addNote = () => {
         const oNow = new Date();
@@ -20,9 +20,9 @@ export default function AddNoteRenderer(props) {
                     }}/>
                 </div>
                 <div className="button-container">
-                <img src={filter}/>
+                    <img src={filter} alt="filter-icon" onClick={openDialogFilters}/>
                     <button onClick={_addNote} className="button"
-                    disabled={textNote === ""}>Publish</button>
+                    disabled={textNote === ""}><b>Publish</b></button>
                 </div>
             </div>);
     }
