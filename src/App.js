@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import ListRenderer from './components/ListRenderer';
 import './App.css';
+
 const ref = React.createRef();
 
 const ReferencedListRenderer = React.forwardRef((props, ref) => (
@@ -19,7 +20,7 @@ function App() {
   }, [notes]);
   
   return (
-    <div style={{height: "85vh", width: "70vw"}} className="box-shadow">
+    <div className="box-shadow main-div">
     
     <div className="gradient-header"/>
     <ReferencedListRenderer notes={notes} ref={ref}/>

@@ -10,6 +10,22 @@
   background: linear-gradient(180deg, rgba(255,255,255,1) 50%, rgba(0,212,255,0) 100%);
 }
 
+.main-div {
+  height: 85vh; 
+  width: 70vw;
+}
+
+@media screen and (max-width: 600px) {
+  .main-div {
+    height: 100vh; 
+    width: 100vw;
+  }
+
+  .gradient-header {
+    width: 98vw;
+  }
+}
+
 /* new item*/
 
 .bottom-container {
@@ -28,7 +44,9 @@
   background-color: #ffffff;
   border: 1px solid #dee4ed;
   border-radius: 4px;
-  text-indent: 20px;
+  text-indent: 10px;
+  padding: 3px;
+  margin-top: 2vh;
 }
 
 .input:focus {
@@ -75,10 +93,11 @@
 
 .user-pic {
   border-radius: 3rem;
-  height: 5vh;
-  width: 5vh;
+  height: 6vh;
+  width: 6vh;
   margin: 1vh;
   margin-top: 4vh;
+  object-fit: cover;
 }
 
 .note-info {
@@ -104,6 +123,10 @@
     height: auto;
     align-items: center
   }
+
+  .note-info-name {
+    margin-bottom: 0rem;
+  }
 }
 
 .note-info-text {
@@ -114,12 +137,12 @@
   align-items: center;
 }
 
-.note-info-text-others {
+.note-info-text[datatype='others'] {
   background-color: #eff2f7;
   margin-left: 1vw;
 }
 
-.note-info-text-mine {
+.note-info-text[datatype='mine'] {
   background-color: #c2cddd;
   margin-right: 1vw;
 }
@@ -140,11 +163,11 @@
   flex-direction: row;
 }
 
-.note-container-others {
+.note-container[datatype="others"] {
   justify-content: flex-start;
 }
 
-.note-container-mine {
+.note-container[datatype="mine"] {
   justify-content: flex-end;
 }
 
@@ -156,23 +179,60 @@
   margin-left: 1vw;
 }
 
-.note-item-others {
+.note-item[datatype="others"] {
   flex-direction: row;
 }
 
-.note-item-mine {
+.note-item[datatype="mine"] {
   flex-direction: row-reverse;
 }
 
 .hide-content {
   overflow: hidden;
-  line-height: 1em;
-  height: 3em;
+  position: relative; 
+  line-height: 1.2em;
+  max-height: 3.6em; 
+  text-align: justify;  
+  margin-right: -1em;
+  padding-right: 1em;
 }
 
 .show-content {
   line-height: 1em;
   height: auto;
+}
+
+.note {
+  font-size: 2.4vh; 
+  color: #0f0f11; 
+  word-break: break-all;
+}
+
+.hide-content:before {
+  content: '...';
+  position: absolute;    
+  right: 0.3vw;
+  bottom: 0.21vw;
+}
+
+.hide-content[datatype='others']:after {
+  content: '';
+  position: absolute;
+  right: 0;
+  width: 1em;
+  height: 1em;
+  margin-top: 0.2em;
+  background: #eff2f7;
+}
+
+.hide-content[datatype='mine']:after {
+  content: '';
+  position: absolute;
+  right: 0;
+  width: 1em;
+  height: 1em;
+  margin-top: 0.2em;
+  background: #c2cddd;
 }
 
 .test {
