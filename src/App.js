@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import ListRenderer from './components/ListRenderer';
+import AddNoteRenderer from './components/AddNoteRender';
 import './App.css';
 
 const ref = React.createRef();
@@ -8,38 +9,29 @@ const ReferencedListRenderer = React.forwardRef((props, ref) => (
   <ListRenderer notes={props.notes} reference={ref}/>
 ));
 
+const fetchedNotes = JSON.parse(localStorage.getItem("notes"));
+const allNotes = Array.isArray(fetchedNotes) && fetchedNotes.length > 0 ? fetchedNotes : [
+  { userName: "test", time: 1621026120281, note: "ciao", isMine: false}, 
+  { userName: "test", time: 111026140281, note: "ciao", isMine: false}
+];
+
 function App() {
-  const [notes, setNotes] = useState([
-    { userName: "test", time: 1621026120281, note: "ciao", isMine: false}, 
-    { userName: "test", time: 111026140281, note: "ciao", isMine: false}
-  ]);
-  const [textNote, setNoteText] = useState("");
+  const [notes, setNotes] = useState(allNotes);
 
   useEffect(() => {
     ref?.current?.scrollIntoView({behavior: "smooth"});
   }, [notes]);
+
+  const _addNote = (newNotes) => {
+    setNotes(newNotes)
+    localStorage.setItem("notes", JSON.stringify(newNotes));
+  };
   
   return (
     <div className="box-shadow main-div">
-    
-    <div className="gradient-header"/>
-    <ReferencedListRenderer notes={notes} ref={ref}/>
-      
-      <div className="bottom-container">
-        <div className="input-container">
-          <input placeholder="Enter note about the process" className="input" value={textNote} onChange={event => {
-            setNoteText(event.target.value)
-            }}/>
-        </div>
-        <div className="button-container">
-          <button onClick={() => {
-            const oNow = new Date();
-            setNotes([...notes, {userName: "You", time: oNow.getTime(), note: textNote, isMine: true}]);
-            setNoteText("");
-          }} className="button"
-          disabled={textNote === ""}>Publish</button>
-        </div>
-      </div>
+      <div className="gradient-header"/>
+      <ReferencedListRenderer notes={notes} ref={ref}/>
+      <AddNoteRenderer notes={notes} addNote={_addNote} />
     </div>
   );
 } 

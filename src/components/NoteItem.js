@@ -1,7 +1,7 @@
 import { useRef, useState, useEffect } from 'react';
 import logo from '../images/images-1.jpg';
 
-export default function ListRenderer(props) {
+export default function NoteItem(props) {
   const noteRef = useRef(null);
   const noteItemRef = useRef(null);
   const [bShouldShowMore, setShowMore] = useState(false);
