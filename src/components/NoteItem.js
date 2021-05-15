@@ -15,16 +15,22 @@ export default function NoteItem(props) {
 
   const _defineInitials = (userName) => {
     return userName.split(" ").reduce((sAcc, sNamePart) => { return sAcc += sNamePart[0]}, "")
-  }
+  };
+
+  const _addMarginTopIfNeeded = (index) => {
+    return {
+        marginTop: index === 0 ? "2vh" : "0"
+    };
+  };
 
   const _renderNoteItem = props => {
       const { note: noteInfo, image } = props;
       const { userName, time, note, isMine} = noteInfo;
       const oDate = new Date(time)
-      const sDate = oDate.toLocaleDateString();
+      const sDate = oDate.toLocaleDateString("en-GB");
       const sTime = oDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
       return (
-            <div ref={noteItemRef} datatype={!isMine ? "others": "mine"} className={"note-container"}>
+            <div ref={noteItemRef} datatype={!isMine ? "others": "mine"} style={_addMarginTopIfNeeded(props.index)} className={"note-container"}>
                 <div datatype={!isMine ? "others": "mine"} className={"note-item"}>
                     {image ? <img src={image} alt="user-pic" className="user-pic"/> : <p className="initials">{_defineInitials(userName)}</p>}
                     <div className="note-info">

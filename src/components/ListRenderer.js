@@ -18,8 +18,8 @@ export default function ListRenderer(props) {
     return (
       <div className="list-renderer">
         <dl>
-          {notes.map((oNote) => (
-            <NoteItem note={oNote} image={props.userImages[oNote.userName]}/>
+          {notes.map((oNote, index) => (
+            <NoteItem index={index} note={oNote} image={props.userImages[oNote.userName]}/>
           ))}
         </dl>
         <div ref={reference}/>

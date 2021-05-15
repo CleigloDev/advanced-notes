@@ -4,7 +4,7 @@
 }
 
 .gradient-header {
-  height: 10vh;
+  height: 9vh;
   position: absolute;
   width: 68.8vw;
   background: linear-gradient(180deg, rgb(255, 255, 255) 50%, rgba(0,212,255,0) 100%);
@@ -77,6 +77,16 @@
   padding: 1vh;
   padding-right: 1.5vh;
   padding-left: 1.5vh;
+}
+
+.button:hover {
+  background-color: #c01151;
+  cursor: pointer;
+}
+
+.filter-button:hover {
+  opacity: 0.7;
+  cursor: pointer;
 }
 
 .input-container {
@@ -241,6 +251,12 @@
 
 .read-more {
   color: #3b84b0;
+}
+
+.read-more:hover {
+  color: #36749b;
+  cursor: pointer;
+  text-decoration: underline;
 }
 
 .test {

@@ -20,7 +20,7 @@ export default function AddNoteRenderer(props) {
                     }}/>
                 </div>
                 <div className="button-container">
-                    <img src={filter} alt="filter-icon" onClick={openDialogFilters}/>
+                    <img src={filter} alt="filter-icon" onClick={openDialogFilters} class="filter-button"/>
                     <button onClick={_addNote} className="button"
                     disabled={textNote === ""}><b>Publish</b></button>
                 </div>
