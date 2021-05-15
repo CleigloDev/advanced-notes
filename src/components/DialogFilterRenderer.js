@@ -26,8 +26,8 @@ export default function DialogFilterRenderer(props) {
             <Dialog open={open}>
                 <DialogTitle><b>Filter Users</b></DialogTitle>
                 <DialogContent dividers>
-                    <FormControl style={{maxHeight: "20rem", width: "auto"}}>
-                        {[...userNameSet, "ciccio pasticcio lunghissimo"].map(sUserName => (
+                    <FormControl className="form-filters">
+                        {[...userNameSet].map(sUserName => (
                             <FormControlLabel
                             control={<Checkbox checked={listChecked[sUserName] || false} onChange={handleChange} name={sUserName} />}
                             label={sUserName}
@@ -36,10 +36,10 @@ export default function DialogFilterRenderer(props) {
                     </FormControl>
                 </DialogContent>
                 <DialogActions>
-                    <Button onClick={() => closeDialogFilters(false)} color="primary">
+                    <Button className="button-cancel" onClick={() => closeDialogFilters(false)} color="primary">
                         <b>Cancel</b>
                     </Button>
-                    <Button onClick={() => closeDialogFilters(true)} color="primary">
+                    <Button className="button-ok" onClick={() => closeDialogFilters(true)} color="primary">
                         <b>Ok</b>
                     </Button>
                 </DialogActions>
