@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
+
 import ListRenderer from './components/ListRenderer';
-import AddNoteRenderer from './components/AddNoteRender';
+import AddNoteRenderer from './components/AddNoteRenderer';
+import DialogFilterRenderer from './components/DialogFilterRenderer';
+
 import testNotes from './json/notes.json';
 import userImages from './json/userImages.json';
 import './App.css';
@@ -31,6 +34,7 @@ function App() {
       <div className="gradient-header"/>
       <ReferencedListRenderer notes={notes} ref={ref}/>
       <AddNoteRenderer notes={notes} addNote={_addNote} />
+      <DialogFilterRenderer notes={notes} />
     </div>
   );
 } 

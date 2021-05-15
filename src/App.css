@@ -53,7 +53,8 @@
   padding-left: 10px;
   padding-top: 5px;
   margin-top: 1vh;
-  font-size: 2vh; 
+  font-size: 2vh;
+  resize: none;
 }
 
 @media screen and (max-height: 700px) {
