@@ -13,6 +13,10 @@ export default function NoteItem(props) {
     }
   }, []);
 
+  const _defineInitials = (userName) => {
+    return userName.split(" ").reduce((sAcc, sNamePart) => { return sAcc += sNamePart[0]}, "")
+  }
+
   const _renderNoteItem = props => {
       const { note: noteInfo, image } = props;
       const { userName, time, note, isMine} = noteInfo;
@@ -22,7 +26,7 @@ export default function NoteItem(props) {
       return (
             <div ref={noteItemRef} datatype={!isMine ? "others": "mine"} className={"note-container"}>
                 <div datatype={!isMine ? "others": "mine"} className={"note-item"}>
-                    {image ? <img src={image} alt="user-pic" className="user-pic"/> : <p className="user-pic">CL</p>}
+                    {image ? <img src={image} alt="user-pic" className="user-pic"/> : <p className="initials">{_defineInitials(userName)}</p>}
                     <div className="note-info">
                         <div className="note-info-post">
                             <p className="note-info-name">{userName}</p>
