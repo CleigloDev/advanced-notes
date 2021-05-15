@@ -12,7 +12,7 @@ export default function AddNoteRenderer(props) {
     
     const _renderAddNote = () => {
         return (
-            <div className="bottom-container box-shadow">
+            <div className="bottom-container">
                 <div className="input-container">
                     <textarea placeholder="Enter note about the process" className="input" value={textNote} onChange={event => {
                     setNoteText(event.target.value)

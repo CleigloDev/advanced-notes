@@ -27,7 +27,7 @@ function App() {
   };
   
   return (
-    <div className="main-div">
+    <div className="main-div box-shadow">
       <div className="gradient-header"/>
       <ReferencedListRenderer notes={notes} ref={ref}/>
       <AddNoteRenderer notes={notes} addNote={_addNote} />
