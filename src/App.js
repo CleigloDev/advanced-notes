@@ -1,19 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import ListRenderer from './components/ListRenderer';
 import AddNoteRenderer from './components/AddNoteRender';
+import testNotes from './json/notes.json';
+import userImages from './json/userImages.json';
 import './App.css';
 
 const ref = React.createRef();
 
 const ReferencedListRenderer = React.forwardRef((props, ref) => (
-  <ListRenderer notes={props.notes} reference={ref}/>
+  <ListRenderer notes={props.notes} reference={ref} userImages={userImages}/>
 ));
 
 const fetchedNotes = JSON.parse(localStorage.getItem("notes"));
-const allNotes = Array.isArray(fetchedNotes) && fetchedNotes.length > 0 ? fetchedNotes : [
-  { userName: "test", time: 1621026120281, note: "ciao", isMine: false}, 
-  { userName: "test", time: 111026140281, note: "ciao", isMine: false}
-];
+const allNotes = Array.isArray(fetchedNotes) && fetchedNotes.length > 0 ? fetchedNotes : testNotes.notes;
 
 function App() {
   const [notes, setNotes] = useState(allNotes);

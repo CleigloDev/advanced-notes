@@ -1,5 +1,4 @@
 import { useRef, useState, useEffect } from 'react';
-import logo from '../images/images-1.jpg';
 
 export default function NoteItem(props) {
   const noteRef = useRef(null);
@@ -15,14 +14,15 @@ export default function NoteItem(props) {
   }, []);
 
   const _renderNoteItem = props => {
-      const { userName, time, note, isMine} = props.note;
+      const { note: noteInfo, image } = props;
+      const { userName, time, note, isMine} = noteInfo;
       const oDate = new Date(time)
       const sDate = oDate.toLocaleDateString();
       const sTime = oDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
       return (
             <div ref={noteItemRef} datatype={!isMine ? "others": "mine"} className={"note-container"}>
                 <div datatype={!isMine ? "others": "mine"} className={"note-item"}>
-                    <img src={logo} alt="user-pic" className="user-pic"/>
+                    {image ? <img src={image} alt="user-pic" className="user-pic"/> : <p className="user-pic">CL</p>}
                     <div className="note-info">
                         <div className="note-info-post">
                             <p className="note-info-name">{userName}</p>

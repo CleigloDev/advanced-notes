@@ -1,0 +1,7 @@
+{
+    "notes":[
+    { "userName": "rick shanchez", "time": 1621026120281, "note": "ciao", "isMine": false}, 
+    { "userName": "morty smith", "time": 111026140281, "note": "ciao", "isMine": false},
+    { "userName": "mario rossi", "time": 111026140281, "note": "ciao", "isMine": true}
+  ]
+}
