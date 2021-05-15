@@ -3,6 +3,7 @@ import logo from '../images/images-1.jpg';
 
 export default function ListRenderer(props) {
   const noteRef = useRef(null);
+  const noteItemRef = useRef(null);
   const [bShouldShowMore, setShowMore] = useState(false);
   const [bAllowShowMore, setAllowShowMore] = useState(false);
 
@@ -19,7 +20,7 @@ export default function ListRenderer(props) {
       const sDate = oDate.toLocaleDateString();
       const sTime = oDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
       return (
-            <div datatype={!isMine ? "others": "mine"} className={"note-container"}>
+            <div ref={noteItemRef} datatype={!isMine ? "others": "mine"} className={"note-container"}>
                 <div datatype={!isMine ? "others": "mine"} className={"note-item"}>
                     <img src={logo} alt="user-pic" className="user-pic"/>
                     <div className="note-info">
@@ -32,6 +33,7 @@ export default function ListRenderer(props) {
                                 {note}
                             </p>
                             {bAllowShowMore ? <button onClick={() => {
+                                noteItemRef?.current?.scrollIntoView()
                                 setShowMore(!bShouldShowMore)
                             }}>{!bShouldShowMore ? "Show More" : "Show Less"}</button> : null}
                         </div>
