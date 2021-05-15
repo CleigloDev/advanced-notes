@@ -190,12 +190,10 @@
 
 .hide-content {
   overflow: hidden;
-  position: relative; 
-  line-height: 1.2em;
-  max-height: 3.6em; 
-  text-align: justify;  
-  margin-right: -1em;
-  padding-right: 1em;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
 }
 
 .show-content {
@@ -209,31 +207,8 @@
   word-break: break-all;
 }
 
-.hide-content:before {
-  content: '...';
-  position: absolute;    
-  right: 0.3vw;
-  bottom: 0.21vw;
-}
-
-.hide-content[datatype='others']:after {
-  content: '';
-  position: absolute;
-  right: 0;
-  width: 1em;
-  height: 1em;
-  margin-top: 0.2em;
-  background: #eff2f7;
-}
-
-.hide-content[datatype='mine']:after {
-  content: '';
-  position: absolute;
-  right: 0;
-  width: 1em;
-  height: 1em;
-  margin-top: 0.2em;
-  background: #c2cddd;
+.read-more {
+  color: #3b84b0;
 }
 
 .test {

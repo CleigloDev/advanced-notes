@@ -9,7 +9,7 @@ export default function ListRenderer(props) {
 
   useEffect(() => {
     if (!bAllowShowMore &&
-      noteRef.current.scrollHeight > noteRef.current.offsetHeight) {
+        noteRef.current.scrollHeight > noteRef.current.offsetHeight) {
         setAllowShowMore(true);
     }
   }, []);
@@ -29,13 +29,12 @@ export default function ListRenderer(props) {
                             <p className="note-info-date">{sDate} · {sTime}</p>
                         </div>
                         <div datatype={!isMine ? "others" : "mine"} className={"note-info-text"}>
-                            <p datatype={!isMine ? "others" : "mine"} ref={noteRef} className={`note ${!bShouldShowMore ? "hide-content" : "show-content"}`}>
+                            <p ref={noteRef} className={`note ${!bShouldShowMore ? "hide-content" : "show-content"}`}>
                                 {note}
                             </p>
-                            {bAllowShowMore ? <button onClick={() => {
-                                noteItemRef?.current?.scrollIntoView()
+                            {bAllowShowMore ? <label className="read-more" onClick={() => {
                                 setShowMore(!bShouldShowMore)
-                            }}>{!bShouldShowMore ? "Show More" : "Show Less"}</button> : null}
+                            }}>{!bShouldShowMore ? "Read More" : "Read Less"}</label> : null}
                         </div>
                         {//<div className="test"/>
                         }
