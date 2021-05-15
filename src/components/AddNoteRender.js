@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import filter from '../icons/filtro.png';
 
 export default function AddNoteRenderer(props) {
     const [textNote, setNoteText] = useState("");
@@ -19,6 +20,7 @@ export default function AddNoteRenderer(props) {
                     }}/>
                 </div>
                 <div className="button-container">
+                <img src={filter}/>
                     <button onClick={_addNote} className="button"
                     disabled={textNote === ""}>Publish</button>
                 </div>
