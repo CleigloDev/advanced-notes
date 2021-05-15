@@ -184,19 +184,3 @@
   height: 0;
   top: -17rem;
 }
-
-/*placeholder*/
-
-::placeholder {
-  color: #ced3d8;
-  opacity: 1; /* Firefox */
-  margin-left: 2rem !important;
-}
-
-:-ms-input-placeholder { /* Internet Explorer 10-11 */
- color: #ced3d8;
-}
-
-::-ms-input-placeholder { /* Microsoft Edge */
- color: #ced3d8;
-}
