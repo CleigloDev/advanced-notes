@@ -19,6 +19,16 @@ export default function DialogFilterRenderer(props) {
         props.setListChecked(listUsers);
     };
 
+    const _renderCheckBoxFilters = (aUserNameSet, oListChecked) => (
+        [...aUserNameSet].map((sUserName, index) => (
+            <FormControlLabel key={index}
+                control={<Checkbox checked={oListChecked[sUserName] || false} 
+                onChange={handleChange} name={sUserName} />}
+                label={sUserName}
+            />
+        ))
+    );
+
     const _renderDialogFilter = props => {
         const { open, notes, listChecked, closeDialogFilters } = props;
         const userNameSet = [...new Set(notes.map(oNote => oNote.userName))]
@@ -27,22 +37,23 @@ export default function DialogFilterRenderer(props) {
                 <DialogTitle><b>Filter Users</b></DialogTitle>
                 <DialogContent dividers>
                     <FormControl className="form-filters">
-                        {[...userNameSet].map((sUserName, index) => (
-                            <FormControlLabel key={index}
-                                control={<Checkbox checked={listChecked[sUserName] || false} 
-                                onChange={handleChange} name={sUserName} />}
-                                label={sUserName}
-                            />
-                        ))}
+                        {_renderCheckBoxFilters(userNameSet, listChecked)}
                     </FormControl>
                 </DialogContent>
                 <DialogActions>
-                    <Button className="button-cancel" onClick={() => closeDialogFilters(false)} color="primary">
-                        <b>Cancel</b>
+
+                    <Button 
+                        className="button-cancel" 
+                        onClick={() => closeDialogFilters(false)}>
+                            <b>Cancel</b>
                     </Button>
-                    <Button className="button-ok" onClick={() => closeDialogFilters(true)} color="primary">
+
+                    <Button 
+                        className="button-ok" 
+                        onClick={() => closeDialogFilters(true)}>
                         <b>Ok</b>
                     </Button>
+
                 </DialogActions>
             </Dialog>
         );

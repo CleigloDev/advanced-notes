@@ -14,8 +14,9 @@ export default function NoteItem(props) {
         }
     }, []);
 
-    const _defineInitials = (userName) => {
-        return userName.split(" ").reduce((sAcc, sNamePart) => { return sAcc += sNamePart[0]}, "")
+    const _defineInitials = (sUserName) => {
+        // Concat first letter of name & surname
+        return sUserName.split(" ").reduce((sAcc, sNamePart) => { return sAcc += sNamePart[0]}, "")
     };
 
     const _addMarginTopIfNeeded = (index) => {
@@ -28,10 +29,51 @@ export default function NoteItem(props) {
         showDialogUserInfo(isMine);
     };
 
-    const _renderImageOrInitial = (image, isMine, userName) => {
-       return image ? <img src={image} alt="user-pic" className="user-pic" datatype={!isMine ? "others" : "mine"}
-        onClick={() => _hadleShowDialogUserInfo(isMine)}/> : 
-        <p className="initials" onClick={() => _hadleShowDialogUserInfo(isMine)}>{_defineInitials(userName)}</p>
+    const _renderImageOrInitial = (image, isMine, sUserName) => {
+       return image ? 
+            <img 
+                src={image} 
+                alt="user-pic" 
+                className="user-pic" 
+                datatype={!isMine ? "others" : "mine"}
+                onClick={() => _hadleShowDialogUserInfo(isMine)}/> : 
+            <p 
+                className="initials" 
+                onClick={() => _hadleShowDialogUserInfo(isMine)}>
+                    {_defineInitials(sUserName)}
+            </p>
+    };
+
+    const _renderNoteInfo = (isMine, sUserName, sDate, sTime) => (
+        <div className="note-info-post">
+            <p datatype={!isMine ? "" : "mine"} 
+                onClick={() => _hadleShowDialogUserInfo(isMine)}
+                className="note-info-name">{sUserName}
+            </p>
+            <p className="note-info-date">
+                {sDate} · {sTime}
+            </p>
+        </div>
+    );
+
+    const _renderNoteText = (isMine, sNote) => {
+        const aNoteSplittedNewLine = sNote.split("\n");
+        if (!bAllowShowMore && aNoteSplittedNewLine.length > 3) {
+            setAllowShowMore(true);
+        }
+        return (
+            <div 
+                datatype={!isMine ? "others" : "mine"} 
+                className={"note-info-text"}>
+                <p ref={noteRef} 
+                    className={`note ${!bShouldShowMore ? "hide-content" : "show-content"}`}>
+                    {sNote}
+                </p>
+                {bAllowShowMore ? <label className="read-more" 
+                    onClick={() => { setShowMore(!bShouldShowMore) }}>
+                    {!bShouldShowMore ? "Read More" : "Read Less"}</label> : null}
+            </div>
+        );
     };
 
     const _renderNoteItem = props => {
@@ -40,26 +82,18 @@ export default function NoteItem(props) {
     const oDate = new Date(time)
     const sDate = oDate.toLocaleDateString("en-GB");
     const sTime = oDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    
     return (
-        <div ref={noteItemRef} datatype={!isMine ? "others": "mine"} 
-            style={_addMarginTopIfNeeded(index)} className={"note-container"}>
+        <div ref={noteItemRef} 
+            datatype={!isMine ? "others": "mine"} 
+            style={_addMarginTopIfNeeded(index)} 
+            className={"note-container"}>
             <div datatype={!isMine ? "others": "mine"} className={"note-item"}>
                 {_renderImageOrInitial(image, isMine, userName)}
                 <div className="note-info">
-                    <div className="note-info-post">
-                        <p datatype={!isMine ? "" : "mine"} onClick={() => _hadleShowDialogUserInfo(isMine)}
-                            className="note-info-name">{userName}</p>
-                        <p className="note-info-date">{sDate} · {sTime}</p>
-                    </div>
-                    <div datatype={!isMine ? "others" : "mine"} className={"note-info-text"}>
-                        <p ref={noteRef} className={`note ${!bShouldShowMore ? "hide-content" : "show-content"}`}>
-                            {note}
-                        </p>
-                        {bAllowShowMore ? <label className="read-more" 
-                            onClick={() => { setShowMore(!bShouldShowMore) }}>
-                            {!bShouldShowMore ? "Read More" : "Read Less"}</label> : null}
-                    </div>
-                </div>          
+                    {_renderNoteInfo(isMine, userName, sDate, sTime)}
+                    {_renderNoteText(isMine, note)}
+                </div>
             </div>
         </div>
         );

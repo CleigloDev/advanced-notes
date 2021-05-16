@@ -55,18 +55,30 @@ export default function DialogUserInfoRenderer(props) {
                         value={nameSurname}
                         fullWidth
                     />
+
                     <div className="upload-photo-container">
                         <label htmlFor="user-pic">Select photo</label>
-                        <input ref={refFileUploader} id="user-pic" type="file" accept="image/png, image/jpeg" 
+
+                        <input
+                            ref={refFileUploader} 
+                            id="user-pic" 
+                            type="file" 
+                            accept="image/png, image/jpeg" 
                             style={{visibility: "hidden"}}
-                            onChange={() => _handleFileLoading()}/>
+                            onChange={() => _handleFileLoading()}
+                        />
                     </div>
                 </DialogContent>
                 <DialogActions>
-                    <Button className="button-cancel" onClick={() => _closeDialogUserInfo()} color="primary">
+                    <Button 
+                        className="button-cancel" 
+                        onClick={() => _closeDialogUserInfo()}>
                         <b>Cancel</b>
                     </Button>
-                    <Button className="button-ok" onClick={() => _closeDialogUserInfo()} color="primary">
+
+                    <Button 
+                        className="button-ok" 
+                        onClick={() => _closeDialogUserInfo()}>
                         <b>Ok</b>
                     </Button>
                 </DialogActions>

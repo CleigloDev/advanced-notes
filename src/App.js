@@ -12,9 +12,14 @@ import './App.scss';
 const ref = React.createRef();
 
 const ReferencedListRenderer = React.forwardRef((props, ref) => (
-  <ListRenderer notes={props.notes} reference={ref} userImages={userImages} 
-    showDialogUserInfo={props.showDialogUserInfo} userInfo={props.userInfo}
-    listChecked={props.listChecked} applyFilters={props.applyFilters}/>
+  <ListRenderer 
+    notes={props.notes}
+    reference={ref} 
+    userImages={userImages} 
+    showDialogUserInfo={props.showDialogUserInfo} 
+    userInfo={props.userInfo}
+    listChecked={props.listChecked} 
+    applyFilters={props.applyFilters}/>
 ));
 
 const fetchedNotes = JSON.parse(localStorage.getItem("notes"));
@@ -70,13 +75,30 @@ function App() {
   return (
     <div className="main-div box-shadow">
       <div className="gradient-header"/>
-      <ReferencedListRenderer notes={notes} ref={ref} listChecked={listChecked} 
-        userInfo={userInfo} showDialogUserInfo={_openDialogUserInfo} 
+
+      <ReferencedListRenderer 
+        notes={notes} 
+        ref={ref} 
+        listChecked={listChecked} 
+        userInfo={userInfo} 
+        showDialogUserInfo={_openDialogUserInfo} 
         applyFilters={applyFilters}/>
-      <AddNoteRenderer notes={notes} addNote={_addNote} openDialogFilters={_openDialogFilters} />
-      <DialogFilterRenderer notes={notes} open={openDialogFilters} 
-        setListChecked={setListChecked} listChecked={listChecked} closeDialogFilters={_closeDialogFilters}/>
-      <DialogUserInfoRenderer open={openDialogUserInfo} userInfo={userInfo} 
+
+      <AddNoteRenderer 
+        notes={notes} 
+        addNote={_addNote} 
+        openDialogFilters={_openDialogFilters} />
+
+      <DialogFilterRenderer 
+        notes={notes} 
+        open={openDialogFilters} 
+        setListChecked={setListChecked} 
+        listChecked={listChecked} 
+        closeDialogFilters={_closeDialogFilters}/>
+
+      <DialogUserInfoRenderer 
+        open={openDialogUserInfo} 
+        userInfo={userInfo} 
         closeDialogUserInfo={_closeDialogUserInfo} />
     </div>
   );
