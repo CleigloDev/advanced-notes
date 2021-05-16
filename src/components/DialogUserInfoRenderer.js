@@ -36,9 +36,15 @@ export default function DialogUserInfoRenderer(props) {
         });
     };
 
-    const _closeDialogUserInfo = async() => {
+    const _closeDialogUserInfoApply = async() => {
         const image = await Promise.all(promiseLoadImage);
+        promiseLoadImage = [];
         props.closeDialogUserInfo(nameSurname, image[0]);
+    };
+
+    const _closeDialogUserInfoCancel = () => {
+        setNameSurname(props.userInfo?.userName || "");
+        props.closeDialogUserInfo();
     };
 
     const _renderDialogUserInfo = props => {
@@ -72,13 +78,14 @@ export default function DialogUserInfoRenderer(props) {
                 <DialogActions>
                     <Button 
                         className="button-cancel" 
-                        onClick={() => _closeDialogUserInfo()}>
+                        onClick={() => _closeDialogUserInfoCancel(false)}>
                         <b>Cancel</b>
                     </Button>
 
                     <Button 
                         className="button-ok" 
-                        onClick={() => _closeDialogUserInfo()}>
+                        disabled={nameSurname === ""}
+                        onClick={() => _closeDialogUserInfoApply(true)}>
                         <b>Ok</b>
                     </Button>
                 </DialogActions>
