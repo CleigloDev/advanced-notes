@@ -142,11 +142,9 @@ $color_malachite_approx: #06b33a;
 }
 .note-info-text[datatype='others'] {
 	background-color: $color_athens_gray_approx;
-	margin-left: 1vw;
 }
 .note-info-text[datatype='mine'] {
 	background-color: $color_periwinkle_gray_approx;
-	margin-right: 1vw;
 }
 .note-info-name {
 	color: $color_shark_approx;
@@ -183,6 +181,9 @@ $color_malachite_approx: #06b33a;
 .hide-content {
 	overflow: hidden;
 	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 3;
+	-webkit-box-orient: vertical;
 }
 .show-content {
 	line-height: 1em;
@@ -200,15 +201,6 @@ $color_malachite_approx: #06b33a;
 		cursor: pointer;
 		text-decoration: underline;
 	}
-}
-.test {
-	position: relative;
-	border: 1vw solid;
-	left: 0;
-	border-color: $color_athens_gray_approx transparent transparent transparent;
-	width: 0;
-	height: 0;
-	top: -17rem;
 }
 .form-filters {
 	max-height: 20vh;

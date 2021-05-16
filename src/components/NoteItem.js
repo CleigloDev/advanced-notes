@@ -59,8 +59,6 @@ export default function NoteItem(props) {
                             onClick={() => { setShowMore(!bShouldShowMore) }}>
                             {!bShouldShowMore ? "Read More" : "Read Less"}</label> : null}
                     </div>
-                    {//<div className="test"/>
-                    }
                 </div>          
             </div>
         </div>
