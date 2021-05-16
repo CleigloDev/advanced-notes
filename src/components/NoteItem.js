@@ -35,14 +35,14 @@ export default function NoteItem(props) {
     };
 
     const _renderNoteItem = props => {
-    const { note: noteInfo, image } = props;
+    const { note: noteInfo, image, index } = props;
     const { userName, time, note, isMine} = noteInfo;
     const oDate = new Date(time)
     const sDate = oDate.toLocaleDateString("en-GB");
     const sTime = oDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
     return (
         <div ref={noteItemRef} datatype={!isMine ? "others": "mine"} 
-            style={_addMarginTopIfNeeded(props.index)} className={"note-container"}>
+            style={_addMarginTopIfNeeded(index)} className={"note-container"}>
             <div datatype={!isMine ? "others": "mine"} className={"note-item"}>
                 {_renderImageOrInitial(image, isMine, userName)}
                 <div className="note-info">

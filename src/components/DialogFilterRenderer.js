@@ -27,8 +27,8 @@ export default function DialogFilterRenderer(props) {
                 <DialogTitle><b>Filter Users</b></DialogTitle>
                 <DialogContent dividers>
                     <FormControl className="form-filters">
-                        {[...userNameSet].map(sUserName => (
-                            <FormControlLabel
+                        {[...userNameSet].map((sUserName, index) => (
+                            <FormControlLabel key={index}
                                 control={<Checkbox checked={listChecked[sUserName] || false} 
                                 onChange={handleChange} name={sUserName} />}
                                 label={sUserName}
