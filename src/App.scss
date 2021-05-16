@@ -214,6 +214,10 @@ $color_malachite_approx: #06b33a;
 	width: 20vw;
 	overflow-y: hidden !important;
 }
+.select-user-pic:hover {
+	cursor: pointer;
+	text-decoration: underline;
+}
 .button-cancel {
 	border: 1px solid $color_milano_red_approx !important;
 	color: $color_milano_red_approx !important;

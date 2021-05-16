@@ -7,16 +7,23 @@ import DialogActions from '@material-ui/core/DialogActions';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 
+var promiseLoadImage = [];
+
 export default function DialogUserInfoRenderer(props) {
-    var promiseLoadImage = [];
     const [nameSurname, setNameSurname] = useState(props.userInfo?.userName || "");
+    const [fileName, setFileName] = useState("");
     const refFileUploader = useRef(null);
 
     const handleChange = (event) => {
         setNameSurname(event.target.value);
     };
 
-    const _handleFileLoading = () => {
+    const _handleFileLoading = (event) => {
+        const { files } = event.target;
+        if(files?.length > 0) {
+            const { name } = files[0];
+            setFileName(name);
+        }
         promiseLoadImage.push(_promiseLoadImage());
     };
 
@@ -24,7 +31,7 @@ export default function DialogUserInfoRenderer(props) {
         return new Promise((resolve) => {
             const files = refFileUploader.current.files;
 
-            if (files.length) {
+            if (files?.length > 0) {
                 const reader = new FileReader()
                 reader.addEventListener('load', (e) => {
                     resolve(reader.result);
@@ -39,11 +46,14 @@ export default function DialogUserInfoRenderer(props) {
     const _closeDialogUserInfoApply = async() => {
         const image = await Promise.all(promiseLoadImage);
         promiseLoadImage = [];
+        setFileName("");
         props.closeDialogUserInfo(nameSurname, image[0]);
     };
 
     const _closeDialogUserInfoCancel = () => {
         setNameSurname(props.userInfo?.userName || "");
+        setFileName("");
+        promiseLoadImage = [];
         props.closeDialogUserInfo();
     };
 
@@ -63,7 +73,9 @@ export default function DialogUserInfoRenderer(props) {
                     />
 
                     <div className="upload-photo-container">
-                        <label htmlFor="user-pic">Select photo</label>
+                        <label className={"select-user-pic"} htmlFor="user-pic">Select photo</label>
+
+                        {fileName ? <p>File loaded</p> : null}
 
                         <input
                             ref={refFileUploader} 
@@ -71,7 +83,7 @@ export default function DialogUserInfoRenderer(props) {
                             type="file" 
                             accept="image/png, image/jpeg" 
                             style={{visibility: "hidden"}}
-                            onChange={() => _handleFileLoading()}
+                            onChange={(event) => _handleFileLoading(event)}
                         />
                     </div>
                 </DialogContent>
