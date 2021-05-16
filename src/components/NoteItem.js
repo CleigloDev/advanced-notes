@@ -29,7 +29,7 @@ export default function NoteItem(props) {
     };
 
     const _renderImageOrInitial = (image, isMine, userName) => {
-       return image ? <img src={image} alt="user-pic" className="user-pic" 
+       return image ? <img src={image} alt="user-pic" className="user-pic" datatype={!isMine ? "others" : "mine"}
         onClick={() => _hadleShowDialogUserInfo(isMine)}/> : 
         <p className="initials" onClick={() => _hadleShowDialogUserInfo(isMine)}>{_defineInitials(userName)}</p>
     };

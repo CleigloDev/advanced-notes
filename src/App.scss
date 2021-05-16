@@ -273,3 +273,7 @@ $color_malachite_approx: #06b33a;
 	cursor: pointer;
 	text-decoration: underline;
 }
+.user-pic[datatype="mine"]:hover {
+	cursor: pointer;
+	opacity: 0.7;
+}
