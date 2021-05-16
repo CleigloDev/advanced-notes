@@ -1,28 +1,40 @@
-import React from 'react';
 import NoteItem from './NoteItem';
 
 export default function ListRenderer(props) {
+
+  const _applyFilterIfNeeded = (listChecked, notes) => {
+    const aNameFiltered = Object.keys(listChecked).filter(sUserName => {
+      return listChecked[sUserName];
+    });
+    return notes = aNameFiltered.length > 0 ? notes.filter((oNote) => {
+      return aNameFiltered.includes(oNote.userName);
+    }) : notes;
+  };
+
+  const _sortNotes = (notes) => {
+    return notes.sort((firstElm, secondElm) => firstElm.time - secondElm.time);
+  };
+
+  const _renderNoteItem = (notes) => {
+    var { userInfo, showDialogUserInfo } = props;
+    return notes.map((oNote, index) => {
+      oNote.userName = oNote.isMine && userInfo?.userName ? userInfo.userName : oNote.userName; 
+      const image = oNote.isMine && userInfo?.image ? userInfo.image : props.userImages[oNote.userName]; 
+      return (<NoteItem index={index} note={oNote} image={image} showDialogUserInfo={showDialogUserInfo}/>)
+    })
+  };
   
   const _renderListItem = props => {
-    var { notes, userInfo, showDialogUserInfo } = props;
+    var { notes } = props;
     const { reference, applyFilters, listChecked } = props;
     if(applyFilters) {
-      const aNameFiltered = Object.keys(listChecked).filter(sUserName => {
-        return listChecked[sUserName];
-      });
-      notes = aNameFiltered.length > 0 ? notes.filter((oNote) => {
-        return aNameFiltered.includes(oNote.userName);
-      }) : notes;
+      notes = _applyFilterIfNeeded(listChecked, notes);
     }
-    notes = notes.sort((firstElm, secondElm) => firstElm.time - secondElm.time);
+    notes = _sortNotes(notes);
     return (
       <div className="list-renderer">
         <dl>
-          {notes.map((oNote, index) => {
-            oNote.userName = oNote.isMine && userInfo?.userName ? userInfo.userName : oNote.userName; 
-            const image = oNote.isMine && userInfo?.image ? userInfo.image : props.userImages[oNote.userName]; 
-            return (<NoteItem index={index} note={oNote} image={image} showDialogUserInfo={showDialogUserInfo}/>)
-          })}
+          {_renderNoteItem(notes)}
         </dl>
         <div ref={reference}/>
       </div>

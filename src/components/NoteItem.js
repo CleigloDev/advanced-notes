@@ -28,6 +28,12 @@ export default function NoteItem(props) {
         showDialogUserInfo(isMine);
     };
 
+    const _renderImageOrInitial = (image, isMine, userName) => {
+       return image ? <img src={image} alt="user-pic" className="user-pic" 
+        onClick={() => _hadleShowDialogUserInfo(isMine)}/> : 
+        <p className="initials" onClick={() => _hadleShowDialogUserInfo(isMine)}>{_defineInitials(userName)}</p>
+    };
+
     const _renderNoteItem = props => {
     const { note: noteInfo, image } = props;
     const { userName, time, note, isMine} = noteInfo;
@@ -38,9 +44,7 @@ export default function NoteItem(props) {
         <div ref={noteItemRef} datatype={!isMine ? "others": "mine"} 
             style={_addMarginTopIfNeeded(props.index)} className={"note-container"}>
             <div datatype={!isMine ? "others": "mine"} className={"note-item"}>
-                {image ? <img src={image} alt="user-pic" className="user-pic" 
-                    onClick={() => _hadleShowDialogUserInfo(isMine)}/> : 
-                    <p className="initials" onClick={() => _hadleShowDialogUserInfo(isMine)}>{_defineInitials(userName)}</p>}
+                {_renderImageOrInitial(image, isMine, userName)}
                 <div className="note-info">
                     <div className="note-info-post">
                         <p datatype={!isMine ? "" : "mine"} onClick={() => _hadleShowDialogUserInfo(isMine)}
@@ -51,9 +55,9 @@ export default function NoteItem(props) {
                         <p ref={noteRef} className={`note ${!bShouldShowMore ? "hide-content" : "show-content"}`}>
                             {note}
                         </p>
-                        {bAllowShowMore ? <label className="read-more" onClick={() => {
-                            setShowMore(!bShouldShowMore)
-                        }}>{!bShouldShowMore ? "Read More" : "Read Less"}</label> : null}
+                        {bAllowShowMore ? <label className="read-more" 
+                            onClick={() => { setShowMore(!bShouldShowMore) }}>
+                            {!bShouldShowMore ? "Read More" : "Read Less"}</label> : null}
                     </div>
                     {//<div className="test"/>
                     }

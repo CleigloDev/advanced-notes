@@ -15,9 +15,8 @@ export default function AddNoteRenderer(props) {
         return (
             <div className="bottom-container">
                 <div className="input-container">
-                    <textarea placeholder="Enter note about the process" className="input" value={textNote} onChange={event => {
-                    setNoteText(event.target.value)
-                    }}/>
+                    <textarea placeholder="Enter note about the process" className="input" value={textNote} 
+                        onChange={event => { setNoteText(event.target.value) }}/>
                 </div>
                 <div className="button-container">
                     <img src={filter} alt="filter-icon" onClick={openDialogFilters} className="filter-button"/>
