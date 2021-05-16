@@ -45,12 +45,13 @@ function App() {
     localStorage.setItem("notes", JSON.stringify(newNotes));
   };
 
-  const _closeDialogFilters = (bApplyFilters) => {
-    if(!bApplyFilters) {
-      setListChecked({});
+  const _closeDialogFilters = (bApplyFilters, bShouldResetFilters) => {
+    showDialogFilter(false);
+    if(bShouldResetFilters) setListChecked({});
+    if(!bApplyFilters && !bShouldResetFilters) {
+      return;
     }
     setApplyFilters(bApplyFilters);
-    showDialogFilter(false);
     ref?.current?.scrollIntoView({behavior: "smooth"});
   };
 

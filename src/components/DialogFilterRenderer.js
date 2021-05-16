@@ -1,11 +1,14 @@
 import Dialog from '@material-ui/core/Dialog';
-import DialogTitle from '@material-ui/core/DialogTitle';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogActions from '@material-ui/core/DialogActions';
 import Button from '@material-ui/core/Button';
 import Checkbox from '@material-ui/core/Checkbox';
 import FormControl from '@material-ui/core/FormControl';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
+import IconButton from '@material-ui/core/IconButton';
+import Typography from '@material-ui/core/Typography';
+import CloseIcon from '@material-ui/icons/Close';
+import Toolbar from '@material-ui/core/Toolbar';
 
 export default function DialogFilterRenderer(props) {
 
@@ -34,7 +37,16 @@ export default function DialogFilterRenderer(props) {
         const userNameSet = [...new Set(notes.map(oNote => oNote.userName))]
         return(
             <Dialog open={open}>
-                <DialogTitle><b>Filter Users</b></DialogTitle>
+                <Toolbar>
+                    <IconButton edge="start"
+                        onClick={() => closeDialogFilters(false, false)}>
+                        <CloseIcon />
+                    </IconButton>
+
+                    <Typography>
+                        <b>Filter Users</b>
+                    </Typography>
+                </Toolbar>
                 <DialogContent dividers>
                     <FormControl className="form-filters">
                         {_renderCheckBoxFilters(userNameSet, listChecked)}
@@ -44,8 +56,8 @@ export default function DialogFilterRenderer(props) {
 
                     <Button 
                         className="button-cancel" 
-                        onClick={() => closeDialogFilters(false)}>
-                            <b>Cancel</b>
+                        onClick={() => closeDialogFilters(false, true)}>
+                            <b>Reset</b>
                     </Button>
 
                     <Button 
