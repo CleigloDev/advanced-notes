@@ -20,15 +20,16 @@ const ReferencedListRenderer = React.forwardRef((props, ref) => (
 const fetchedNotes = JSON.parse(localStorage.getItem("notes"));
 const allNotes = Array.isArray(fetchedNotes) && fetchedNotes.length > 0 ? fetchedNotes : testNotes.notes;
 
-const fetchedUserInfo = JSON.parse(localStorage.getItem("user-info"));
-
 function App() {
+  const fetchedUserInfo = JSON.parse(localStorage.getItem("user-info"));
+  
   const [notes, setNotes] = useState(allNotes);
   const [openDialogFilters, showDialogFilter] = useState(false);
   const [openDialogUserInfo, showDialogUserInfo] = useState(false);
   const [applyFilters, setApplyFilters] = useState(false);
   const [listChecked, setListChecked] = useState({});
   const [userInfo, setUserInfo] = useState(fetchedUserInfo);
+
 
   useEffect(() => {
     ref?.current?.scrollIntoView({behavior: "smooth"});
@@ -56,9 +57,10 @@ function App() {
     showDialogUserInfo(bIsMine);
   };
 
-  const _closeDialogUserInfo = (userName) => {
-    if(userName) {
-      var oUserInfo = { userName }
+  const _closeDialogUserInfo = (userName, image) => {
+    if(userName || image) {
+      image = image ? image : fetchedUserInfo?.image;
+      var oUserInfo = { userName, image }
       setUserInfo(oUserInfo);
       localStorage.setItem("user-info", JSON.stringify(oUserInfo));
     }

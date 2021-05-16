@@ -20,7 +20,8 @@ export default function ListRenderer(props) {
         <dl>
           {notes.map((oNote, index) => {
             oNote.userName = oNote.isMine && userInfo?.userName ? userInfo.userName : oNote.userName; 
-            return (<NoteItem index={index} note={oNote} image={props.userImages[oNote.userName]} showDialogUserInfo={showDialogUserInfo}/>)
+            const image = oNote.isMine && userInfo?.image ? userInfo.image : props.userImages[oNote.userName]; 
+            return (<NoteItem index={index} note={oNote} image={image} showDialogUserInfo={showDialogUserInfo}/>)
           })}
         </dl>
         <div ref={reference}/>

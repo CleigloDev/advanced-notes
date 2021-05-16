@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 
 import Dialog from '@material-ui/core/Dialog';
 import DialogTitle from '@material-ui/core/DialogTitle';
@@ -8,14 +8,41 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 
 export default function DialogUserInfoRenderer(props) {
+    var promiseLoadImage = [];
     const [nameSurname, setNameSurname] = useState(props.userInfo?.userName || "");
+    const refFileUploader = useRef(null);
 
     const handleChange = (event) => {
         setNameSurname(event.target.value);
     };
 
+    const _handleFileLoading = () => {
+        promiseLoadImage.push(_promiseLoadImage());
+    };
+
+    const _promiseLoadImage = () => {
+        return new Promise((resolve) => {
+            const files = refFileUploader.current.files;
+
+            if (files.length) {
+                const reader = new FileReader()
+                reader.addEventListener('load', (e) => {
+                    resolve(reader.result);
+                });
+                reader.readAsDataURL(files[0]);
+            } else {
+                resolve("");
+            }
+        });
+    };
+
+    const _closeDialogUserInfo = async() => {
+        const image = await Promise.all(promiseLoadImage);
+        props.closeDialogUserInfo(nameSurname, image[0]);
+    };
+
     const _renderDialogUserInfo = props => {
-        const { open, closeDialogUserInfo } = props;
+        const { open } = props;
         return(
             <Dialog open={open}>
                 <DialogTitle><b>Modify your info</b></DialogTitle>
@@ -28,12 +55,18 @@ export default function DialogUserInfoRenderer(props) {
                         value={nameSurname}
                         fullWidth
                     />
+                    <div className="upload-photo-container">
+                        <label htmlFor="user-pic">Select photo</label>
+                        <input ref={refFileUploader} id="user-pic" type="file" accept="image/png, image/jpeg" 
+                            style={{visibility: "hidden"}}
+                            onChange={() => _handleFileLoading()}/>
+                    </div>
                 </DialogContent>
                 <DialogActions>
-                    <Button className="button-cancel" onClick={() => closeDialogUserInfo(null)} color="primary">
+                    <Button className="button-cancel" onClick={() => _closeDialogUserInfo()} color="primary">
                         <b>Cancel</b>
                     </Button>
-                    <Button className="button-ok" onClick={() => closeDialogUserInfo(nameSurname)} color="primary">
+                    <Button className="button-ok" onClick={() => _closeDialogUserInfo()} color="primary">
                         <b>Ok</b>
                     </Button>
                 </DialogActions>

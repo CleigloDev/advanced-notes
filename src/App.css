@@ -259,8 +259,9 @@
 /* dialog user info */
 
 .dialog-userinfo {
-  height: 20vh;
+  height: auto;
   width: 20vw;
+  overflow-y: hidden !important;
 }
 
 .button-cancel {
@@ -271,6 +272,10 @@
 .button-ok {
   border: 1px solid #06b33a !important;
   color: #06b33a !important;
+}
+
+.upload-photo-container {
+  margin-top: 5vh;
 }
 
 /* media query */
@@ -287,8 +292,11 @@
   }
   
   .dialog-userinfo {
-    height: 12vh;
     width: 32vw;
+  }
+
+  .form-filters {
+    min-width: 40vw !important;
   }
 }
 
@@ -314,7 +322,10 @@
   }
 
   .dialog-userinfo {
-    height: 20vh;
     width: 70vw;
+  }
+
+  .form-filters {
+    min-width: 70vw !important;
   }
 }
