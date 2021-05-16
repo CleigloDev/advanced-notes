@@ -7,7 +7,7 @@ import DialogUserInfoRenderer from './components/DialogUserInfoRenderer';
 
 import testNotes from './json/notes.json';
 import userImages from './json/userImages.json';
-import './App.css';
+import './App.scss';
 
 const ref = React.createRef();
 

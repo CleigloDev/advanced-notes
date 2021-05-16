@@ -1,0 +1,48 @@
+//colors
+$color_iron_approx: #ced3d8;
+
+//fonts
+$font_0: source-code-pro;
+$font_1: Menlo;
+$font_2: Monaco;
+$font_3: Consolas;
+$font_4: Courier New;
+$font_5: monospace;
+
+body {
+	margin: 0;	
+	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+		'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+		sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+code {
+	font-family: $font_0, $font_1, $font_2, $font_3, $font_4, $font_5;
+}
+textarea {
+	&:-moz-placeholder {
+		color: $color_iron_approx;
+	}
+	&:-ms-input-placeholder {
+		color: $color_iron_approx;
+	}
+	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+}
+:-ms-input-placeholder {
+	color: $color_iron_approx;
+}
+::-ms-input-placeholder {
+	color: $color_iron_approx;
+}
+textarea::-webkit-input-placeholder {
+	color: $color_iron_approx;
+}
+textarea::-moz-placeholder {
+	color: $color_iron_approx;
+}
+textarea::placeholder {
+	color: $color_iron_approx;
+	opacity: 1;
+	font-size: 2vh;
+}
