@@ -10,7 +10,7 @@ import Button from '@material-ui/core/Button';
 var promiseLoadImage = [];
 
 export default function DialogUserInfoRenderer(props) {
-    const [nameSurname, setNameSurname] = useState(props.userInfo?.userName || "");
+    const [nameSurname, setNameSurname] = useState(props.userInfo?.userName || "You");
     const [fileName, setFileName] = useState("");
     const refFileUploader = useRef(null);
 
