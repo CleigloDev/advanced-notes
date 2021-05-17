@@ -31,6 +31,9 @@ $color_malachite_approx: #06b33a;
 	height: 85vh;
 	width: 70vw;
 }
+
+/* new item*/
+
 .bottom-container {
 	min-height: 15%;
 	background-color: $color_athens_gray_approx;
@@ -86,6 +89,9 @@ $color_malachite_approx: #06b33a;
 	padding-top: 1vh;
 	padding-bottom: 1vh;
 }
+
+/*list renderer*/
+
 .list-renderer {
 	height: 85%;
 	background-color: $white;
@@ -95,6 +101,9 @@ $color_malachite_approx: #06b33a;
 	border-top: 1px solid $color_alabaster_approx;
 	border-left: 1px solid $color_alabaster_approx;
 }
+
+/* note item */
+
 .initials {
 	border-radius: 3rem;
 	height: 3vh;
@@ -204,11 +213,17 @@ $color_malachite_approx: #06b33a;
 		text-decoration: underline;
 	}
 }
+
+/* dialog filters */
+
 .form-filters {
 	max-height: 20vh;
 	min-width: 18vw !important;
 	width: auto;
 }
+
+/* dialog user info */
+
 .dialog-userinfo {
 	height: auto;
 	width: 20vw;
@@ -229,6 +244,9 @@ $color_malachite_approx: #06b33a;
 .upload-photo-container {
 	margin-top: 5vh;
 }
+
+/* media query */
+
 @media screen and(max-width: 1024px) {
 	.main-div {
 		margin-top: 0;
@@ -271,6 +289,9 @@ $color_malachite_approx: #06b33a;
 		min-width: 70vw !important;
 	}
 }
+
+/* hover */
+ 
 .filter-button:hover {
 	opacity: 0.7;
 	cursor: pointer;
