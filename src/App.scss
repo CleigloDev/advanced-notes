@@ -266,6 +266,9 @@ $color_malachite_approx: #06b33a;
 	.form-filters {
 		min-width: 40vw !important;
 	}
+	.note-item {
+		width: 85%;
+	}
 }
 @media screen and(max-height: 700px) {
 	.input {
@@ -290,6 +293,9 @@ $color_malachite_approx: #06b33a;
 	}
 	.form-filters {
 		min-width: 70vw !important;
+	}
+	.note-item {
+		width: 95%;
 	}
 }
 
