@@ -51,7 +51,7 @@ export default function DialogUserInfoRenderer(props) {
     };
 
     const _closeDialogUserInfoCancel = () => {
-        setNameSurname(props.userInfo?.userName || "");
+        setNameSurname(props.userInfo?.userName || "You");
         setFileName("");
         promiseLoadImage = [];
         props.closeDialogUserInfo();
@@ -69,6 +69,7 @@ export default function DialogUserInfoRenderer(props) {
                         label="Name Surname"
                         onChange={handleChange}
                         value={nameSurname}
+                        className="text-capitalize-input"
                         fullWidth
                     />
 

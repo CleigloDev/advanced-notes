@@ -24,10 +24,13 @@ export default function DialogFilterRenderer(props) {
 
     const _renderCheckBoxFilters = (aUserNameSet, oListChecked) => (
         [...aUserNameSet].map((sUserName, index) => (
-            <FormControlLabel key={index}
+            <FormControlLabel 
+                key={index}
                 control={<Checkbox checked={oListChecked[sUserName] || false} 
-                onChange={handleChange} name={sUserName} />}
-                label={sUserName}
+                onChange={handleChange} 
+                name={sUserName} />}
+                label={sUserName} 
+                className="text-capitalize-checkbox"
             />
         ))
     );

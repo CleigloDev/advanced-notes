@@ -48,7 +48,8 @@ export default function NoteItem(props) {
         <div className="note-info-post">
             <p datatype={!isMine ? "" : "mine"} 
                 onClick={() => _hadleShowDialogUserInfo(isMine)}
-                className="note-info-name">{sUserName}
+                className="note-info-name">
+                    {sUserName}
             </p>
             <p className="note-info-date">
                 {sDate} · {sTime}

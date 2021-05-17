@@ -56,6 +56,7 @@ $color_malachite_approx: #06b33a;
 	margin-top: 1vh;
 	font-size: 2vh;
 	resize: none;
+	text-transform: capitalize;
 	&:focus {
 		outline: none !important;
 	}
@@ -159,6 +160,7 @@ $color_malachite_approx: #06b33a;
 	color: $color_shark_approx;
 	font-size: 2vh;
 	font-weight: bold;
+	text-transform: capitalize;
 }
 .note-info-date {
 	color: $color_gray_chateau_approx;
@@ -203,6 +205,7 @@ $color_malachite_approx: #06b33a;
 	color: $color_cinder_approx;
 	word-break: break-all;
 	white-space: pre-line;
+	text-transform: capitalize;
 }
 .read-more {
 	font-size: 2vh;
@@ -303,4 +306,14 @@ $color_malachite_approx: #06b33a;
 .user-pic[datatype="mine"]:hover {
 	cursor: pointer;
 	opacity: 0.7;
+}
+
+/* text-capitalize */
+
+.text-capitalize-checkbox {
+	text-transform: capitalize;
+}
+
+.text-capitalize-input > div > input {
+	text-transform: capitalize;
 }
